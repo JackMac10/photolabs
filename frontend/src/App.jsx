@@ -20,7 +20,6 @@ import TopicList from 'components/TopicList';
 const App = () => (
   <div className="App">
     <TopNavigation/>
-    <TopicList/>
     <PhotoList/>
   </div>
 );
