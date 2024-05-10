@@ -3,6 +3,8 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import PhotoList from './components/PhotoList';
 import './App.scss';
+import TopNavigation from 'components/TopNavigationBar';
+import TopicList from 'components/TopicList';
 
 //const sampleDataForPhotoListItem = {
 //id: "1",
@@ -17,16 +19,8 @@ import './App.scss';
 
 const App = () => (
   <div className="App">
-    {/* {Array.from({ length: 3 }).map((_, index) => (
-      <PhotoListItem
-        key={index}
-        id={sampleDataForPhotoListItem.id}
-        location={sampleDataForPhotoListItem.location}
-        imageSource={sampleDataForPhotoListItem.imageSource}
-        username={sampleDataForPhotoListItem.username}
-        profile={sampleDataForPhotoListItem.profile}
-      />
-    ))} */}
+    <TopNavigation/>
+    <TopicList/>
     <PhotoList/>
   </div>
 );

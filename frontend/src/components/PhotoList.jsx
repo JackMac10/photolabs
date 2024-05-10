@@ -56,12 +56,19 @@ const sampleDataForPhotoList = [
   },
 ];
 
+const photoTopic = {
+  "1": "People",
+  "2": "Travel",
+  "3": "Nature",
+};
+
 const PhotoList = () => {
   return (
     <ul className="photo-list">
       {sampleDataForPhotoList.map(photo => (
         <PhotoListItem
           key={photo.id}
+          topic={photoTopic[photo.id]}
           id={photo.id}
           location={photo.location}
           imageSource={photo.urls.regular}
