@@ -2,10 +2,10 @@ import React from "react";
 
 import "../styles/TopicList.scss";
 import TopicListItem from 'components/TopicListItem';
-import topics from "mocks/topics";
 
 
-const TopicList = () => {
+
+const TopicList = ({topics}) => {
   return (
     <div>
     <span className="top-nav-bar__topic-list">
