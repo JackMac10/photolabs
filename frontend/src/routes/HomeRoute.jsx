@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, onPhotoItemClick }) => {
   const [favouritePhotos, setFavouritePhotos] = useState([]);
 
   const handleToggleFavourite = (photoId) => {
@@ -18,14 +18,14 @@ const HomeRoute = ({ photos, topics }) => {
   };
   // const isFavPhotoExist = favouritePhotos.length > 0;
   // console.log(favouritePhotos.length)
-  // console.log(hasFavoritePhotos)
+  // console.log(photoFaved)
   
-  const hasFavoritePhotos = favouritePhotos.length > 0;
+  const photoFaved = favouritePhotos.length > 0;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} hasFavoritePhotos={hasFavoritePhotos} />
-      <PhotoList photos={photos} onToggleFavourite={handleToggleFavourite} />
+      <TopNavigation topics={topics} photoFaved={photoFaved} />
+      <PhotoList photos={photos} onToggleFavourite={handleToggleFavourite} onPhotoItemClick={onPhotoItemClick}/>
     </div>
   );
 };

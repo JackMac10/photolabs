@@ -4,12 +4,15 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavourite}) => {
- 
+const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavourite, onPhotoItemClick}) => {
+  const handleClick = () => {
+    onPhotoItemClick();
+  };
+
   return (
     <div className="photo-list__item">
       <PhotoFavButton isSelected={isFavorited} onToggleFavourite={onToggleFavourite} />
-      <img className="photo-list__image" src={imageSource} alt={id}/>
+      <img onClick={handleClick} className="photo-list__image" src={imageSource} alt={id}/>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile}/>
         <span>
