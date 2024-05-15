@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = ({ photos, topics }) => {
-  const [favouritePhotos, setFavouritePhotos] = useState([]); // State to track favourite photos
+  const [favouritePhotos, setFavouritePhotos] = useState([]);
 
   const handleToggleFavourite = (photoId) => {
     if (favouritePhotos.includes(photoId)) {
@@ -17,14 +17,15 @@ const HomeRoute = ({ photos, topics }) => {
 
   };
   // const isFavPhotoExist = favouritePhotos.length > 0;
-  console.log(favouritePhotos.length)
-  console.log(favouritePhotos)
+  // console.log(favouritePhotos.length)
+  // console.log(hasFavoritePhotos)
+  
+  const hasFavoritePhotos = favouritePhotos.length > 0;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} />
+      <TopNavigation topics={topics} hasFavoritePhotos={hasFavoritePhotos} />
       <PhotoList photos={photos} onToggleFavourite={handleToggleFavourite} />
-      <FavBadge isFavPhotoExist={!!favouritePhotos.length} />
     </div>
   );
 };
@@ -40,25 +41,3 @@ export default HomeRoute;
 //   }
 //   return {count, increaseCount};
 // }
-
-
-
-// function PhotoFavButton() {
-//   const [isSelected, setIsSelected] = useState(false);
-//   const [displayAlert, setDisplayAlert] = useState(false);
-
-//   const handleToggleSelect = () => {
-//     setIsSelected(prevState => !prevState);
-//     setDisplayAlert(prevState => !prevState); // Toggle displayAlert when selecting/unselecting
-//   };
-
-//   return (
-//     <div className="photo-list__fav-icon">
-//       <div className="photo-list__fav-icon-svg" onClick={handleToggleSelect}>
-//         <FavIcon selected={isSelected} displayAlert={displayAlert} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default PhotoFavButton;

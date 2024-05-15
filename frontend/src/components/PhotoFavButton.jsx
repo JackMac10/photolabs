@@ -11,6 +11,10 @@ function PhotoFavButton({ onToggleFavourite }) {
     onToggleFavourite()
   };
 
+  // function PhotoFavButton({ isSelected, onToggleFavourite }) {
+  //   const handleToggleSelect = () => {
+  //     onToggleFavourite(); // Call the global state function to toggle favorite status
+  //   };
   return (
     <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg" onClick={handleToggleSelect}>
