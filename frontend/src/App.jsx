@@ -9,15 +9,21 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const App = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
-    const handleToggleModal = () => {
-      setIsModalOpen(prevState => !prevState);
-    };
+    const [currentPhoto, setCurrentPhoto] = useState(null);
+
+  const handlePhotoClick = (photo) => {
+    setCurrentPhoto(photo);
+    setIsModalOpen(true);
+  };
+
+  const handleToggleModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="App">
-       <HomeRoute onPhotoItemClick={handleToggleModal} photos={photos} topics={topics} />
-      {isModalOpen && <PhotoDetailsModal/>}
+       <HomeRoute onPhotoItemClick={handlePhotoClick} photos={photos} topics={topics} />
+      {isModalOpen && <PhotoDetailsModal onClose={handleToggleModal} photo={currentPhoto}/>}
     </div>
   );
 };

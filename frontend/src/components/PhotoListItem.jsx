@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavourite, onPhotoItemClick}) => {
   const handleClick = () => {
-    onPhotoItemClick();
+    onPhotoItemClick({ id, location, imageSource, username, profile });
   };
 
   return (

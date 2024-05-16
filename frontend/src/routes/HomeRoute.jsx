@@ -6,7 +6,8 @@ import React, { useState } from 'react';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = ({ photos, topics, onPhotoItemClick }) => {
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
+  const [favouritePhotos, setFavouritePhotos] = useState([]); // FAV PHOTOS STATE
+ 
 
   const handleToggleFavourite = (photoId) => {
     if (favouritePhotos.includes(photoId)) {
@@ -14,13 +15,10 @@ const HomeRoute = ({ photos, topics, onPhotoItemClick }) => {
     } else {
       setFavouritePhotos([...favouritePhotos, photoId]);
     }
-
-  };
-  // const isFavPhotoExist = favouritePhotos.length > 0;
-  // console.log(favouritePhotos.length)
-  // console.log(photoFaved)
-  
+  }; 
   const photoFaved = favouritePhotos.length > 0;
+
+
 
   return (
     <div className="home-route">
