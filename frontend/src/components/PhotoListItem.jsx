@@ -1,25 +1,23 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
-const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavourite, onPhotoItemClick}) => {
+const PhotoListItem = ({ photo, isFavorited, onToggleFavourite, onPhotoItemClick }) => {
   const handleClick = () => {
-    onPhotoItemClick({ id, location, imageSource, username, profile });
+    onPhotoItemClick(photo);
   };
 
   return (
     <div className="photo-list__item">
       <PhotoFavButton isSelected={isFavorited} onToggleFavourite={onToggleFavourite} />
-      <img onClick={handleClick} className="photo-list__image" src={imageSource} alt={id}/>
+      <img onClick={handleClick} className="photo-list__image" src={photo.urls.regular} alt={photo.id} />
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={profile}/>
+        <img className="photo-list__user-profile" src={photo.user.profile} />
         <span>
-        <div className="photo-list__user-info">{username}</div>
-        <div className="photo-list__user-location">{location.city}, {location.country}</div>
+          <div className="photo-list__user-info">{photo.user.username}</div>
+          <div className="photo-list__user-location">{photo.location.city}, {photo.location.country}</div>
         </span>
-        </div>
+      </div>
     </div>
   );
 };

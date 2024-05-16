@@ -1,13 +1,11 @@
+import React, { useState } from 'react';
 import FavBadge from 'components/FavBadge';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
-import React, { useState } from 'react';
-
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = ({ photos, topics, onPhotoItemClick }) => {
-  const [favouritePhotos, setFavouritePhotos] = useState([]); // FAV PHOTOS STATE
- 
+  const [favouritePhotos, setFavouritePhotos] = useState([]);
 
   const handleToggleFavourite = (photoId) => {
     if (favouritePhotos.includes(photoId)) {
@@ -15,21 +13,20 @@ const HomeRoute = ({ photos, topics, onPhotoItemClick }) => {
     } else {
       setFavouritePhotos([...favouritePhotos, photoId]);
     }
-  }; 
+  };
+
   const photoFaved = favouritePhotos.length > 0;
-
-
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} photoFaved={photoFaved} />
-      <PhotoList photos={photos} onToggleFavourite={handleToggleFavourite} onPhotoItemClick={onPhotoItemClick}/>
+      <PhotoList photos={photos} onToggleFavourite={handleToggleFavourite} onPhotoItemClick={onPhotoItemClick} />
     </div>
   );
 };
 
-export default HomeRoute;
 
+export default HomeRoute;
 
 // const likeCounter = () => {
 //   const [count, setCount] = useState(0);

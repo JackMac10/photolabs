@@ -1,27 +1,22 @@
-import React from "react";
+import React from 'react';
 import PhotoListItem from './PhotoListItem';
-import "../styles/PhotoList.scss";
-
-
-
+import '../styles/PhotoList.scss';
 
 const PhotoList = ({ photos, onToggleFavourite, onPhotoItemClick }) => {
   return (
-    <ul className="photo-list">
+    <div className="photo-list">
       {photos.map(photo => (
         <PhotoListItem
           key={photo.id}
-          id={photo.id}
-          location={photo.location}
-          imageSource={photo.urls.regular}
-          username={photo.user.username}
-          profile={photo.user.profile}
+          photo={photo}
+          isFavorited={false} // Assuming isFavorited is determined elsewhere
           onToggleFavourite={() => onToggleFavourite(photo.id)}
           onPhotoItemClick={onPhotoItemClick}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
 export default PhotoList;
+
