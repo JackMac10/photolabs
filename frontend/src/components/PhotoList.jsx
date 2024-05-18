@@ -9,7 +9,7 @@ const PhotoList = ({ photos, onToggleFavourite, onPhotoItemClick }) => {
         <PhotoListItem
           key={photo.id}
           photo={photo}
-          isFavorited={false} // Assuming isFavorited is determined elsewhere
+          isFavorited={false}
           onToggleFavourite={() => onToggleFavourite(photo.id)}
           onPhotoItemClick={onPhotoItemClick}
         />
