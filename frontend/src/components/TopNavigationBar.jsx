@@ -9,8 +9,13 @@ const TopNavigation = ({topics, photoFaved}) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics} />
-      <FavBadge photoFaved={photoFaved}/>
+      <TopicList 
+      topics={topics} 
+      />
+      
+      <FavBadge 
+      photoFaved={photoFaved}
+      />
     </div>
   )
 }
