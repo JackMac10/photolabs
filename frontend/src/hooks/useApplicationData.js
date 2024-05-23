@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import photos from '../mocks/photos';
 import topics from '../mocks/topics';
 
@@ -9,6 +9,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SET_TOPIC_PHOTOS: 'SET_TOPIC_PHOTOS', // New action for setting topic photos
 };
 
 const initialState = {
@@ -42,6 +43,11 @@ function reducer(state, action) {
         ...state,
         isModalOpen: action.payload.isModalOpen,
       };
+    case ACTIONS.SET_TOPIC_PHOTOS:
+      return {
+        ...state,
+        photos: action.payload.photos,
+      };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }
@@ -63,11 +69,22 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isModalOpen: false } });
   };
 
+  const fetchPhotosByTopic = async (topicId) => {
+    try {
+      const response = await fetch(`http://localhost:8001/api/topics/photos/${topicId}`);
+      const data = await response.json();
+      dispatch({ type: ACTIONS.SET_TOPIC_PHOTOS, payload: { photos: data } });
+    } catch (error) {
+      console.error('Error fetching photos:', error);
+    }
+  };
+
   return {
     state,
     onPhotoSelect: handlePhotoClick,
     toggleFavouritePhotos: handleToggleFavourite,
     onClosePhotoDetailsModal: handleToggleModal,
+    onTopicClick: fetchPhotosByTopic, // New handler for fetching photos by topic
   };
 };
 

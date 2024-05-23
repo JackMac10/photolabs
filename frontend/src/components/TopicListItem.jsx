@@ -1,16 +1,14 @@
-import React from "react";
+import React from 'react';
+import '../styles/TopicListItem.scss';
 
-import "../styles/TopicListItem.scss";
+const TopicListItem = ({ id, label, onClick }) => {
+  const handleClick = () => {
+    
+    onClick(id);
+  };
 
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
-
-const TopicListItem = ({ label }) => {
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick={handleClick}>
       <span>{label}</span>
     </div>
   );

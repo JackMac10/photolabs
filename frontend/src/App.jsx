@@ -10,6 +10,7 @@ const App = () => {
     onPhotoSelect,
     toggleFavouritePhotos,
     onClosePhotoDetailsModal,
+    onTopicClick,
   } = useApplicationData();
 
   return (
@@ -20,6 +21,7 @@ const App = () => {
         topics={topics}
         onToggleFavourite={toggleFavouritePhotos}
         favouritePhotos={favouritePhotos}
+        onTopicClick={onTopicClick}
       />
       {isModalOpen && (
         <PhotoDetailsModal

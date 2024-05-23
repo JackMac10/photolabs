@@ -10,6 +10,7 @@
   },
   "author": "",
   "license": "ISC",
+  "proxy": "http://localhost:8001",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
