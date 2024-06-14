@@ -1,6 +1,8 @@
 import { useReducer, useEffect } from 'react';
 
 const API_URL = 'http://localhost:8001/api';
+
+
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -11,6 +13,7 @@ export const ACTIONS = {
   SET_TOPIC_PHOTOS: 'SET_TOPIC_PHOTOS', 
 };
 
+
 const initialState = {
   isModalOpen: false,
   currentPhoto: null,
@@ -19,6 +22,8 @@ const initialState = {
   topics: [],
 };
 
+
+// Functions to specify how state is updated, returns updated state
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -62,9 +67,11 @@ function reducer(state, action) {
   }
 }
 
+// Custom hook to manage the application state and actions
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // useEffect to fetch initial data when the component mounts
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
@@ -88,19 +95,23 @@ const useApplicationData = () => {
     fetchTopics();
   }, []);
 
+  // Function to handle adding or removing photos from favourites
   const handleToggleFavourite = (photoId) => {
     const actionType = state.favouritePhotos.includes(photoId) ? ACTIONS.FAV_PHOTO_REMOVED : ACTIONS.FAV_PHOTO_ADDED;
     dispatch({ type: actionType, payload: { id: photoId } });
   };
 
+  // Function to handle selecting a photo and opening photoDetailModal
   const handlePhotoClick = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
   };
 
+  // closing PhotoDetailModal
   const handleToggleModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isModalOpen: false } });
   };
 
+  // Function to fetch photos by topic
   const fetchPhotosByTopic = async (topicId) => {
     try {
       const response = await fetch(`${API_URL}/topics/photos/${topicId}`);
@@ -111,6 +122,7 @@ const useApplicationData = () => {
     }
   };
 
+  //return state and action handler to components
   return {
     state,
     onPhotoSelect: handlePhotoClick,

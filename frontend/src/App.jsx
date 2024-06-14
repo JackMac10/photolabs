@@ -13,6 +13,7 @@ const App = () => {
     onTopicClick,
   } = useApplicationData();
 
+
   return (
     <div className="App">
       <HomeRoute
@@ -29,6 +30,7 @@ const App = () => {
           photo={currentPhoto}
           onToggleFavourite={toggleFavouritePhotos}
           favouritePhotos={favouritePhotos}
+          onPhotoItemClick={onPhotoSelect}
         />
       )}
     </div>

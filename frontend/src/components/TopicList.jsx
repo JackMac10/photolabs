@@ -8,6 +8,7 @@ const TopicList = ({topics, onTopicClick}) => {
   return (
     <div>
     <span className="top-nav-bar__topic-list">
+      {/* map through each topic in topics object */}
       {topics.map((topic) => (
           <TopicListItem
           key={topic.id}
