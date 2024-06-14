@@ -15,7 +15,7 @@ const PhotoDetailsModal = ({ onClose, photo, onToggleFavourite, favouritePhotos,
       <div className="photo-details-modal__content">
       <PhotoFavButton
         isFavorited={favouritePhotos.includes(photo.id)}
-        photoId={photoId}
+        photoId={photo.id}
         onToggleFavourite={onToggleFavourite}
         onPhotoItemClick={onPhotoItemClick}
       />
