@@ -3,7 +3,6 @@ import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
 const PhotoList = ({ favouritePhotos, photos, onToggleFavourite, onPhotoItemClick }) => {
-  console.log('photos', photos)
   return (
     <div className="photo-list">
       {photos.map(photo => (

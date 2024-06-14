@@ -2,8 +2,10 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from "components/PhotoFavButton";
+import PhotoListItem from 'components/PhotoListItem';
 
-const PhotoDetailsModal = ({ onClose, photo, onToggleFavourite, favouritePhotos }) => {
+const PhotoDetailsModal = ({ onClose, photo, onToggleFavourite, favouritePhotos, isFavorited, onPhotoItemClick, photoId }) => {
   if (!photo) return null;
 
   return (
@@ -12,6 +14,13 @@ const PhotoDetailsModal = ({ onClose, photo, onToggleFavourite, favouritePhotos 
         <img src={closeSymbol} alt="Close" />
       </button>
       <div className="photo-details-modal__content">
+      <PhotoFavButton
+        isFavorited={favouritePhotos.includes(photo.id)}
+        photoId={photoId}
+        onToggleFavourite={onToggleFavourite}
+        onPhotoItemClick={onPhotoItemClick}
+      />
+
         <img className="photo-details-modal__image" src={photo.urls.full} alt={photo.id} />
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={photo.user.profile} alt={photo.username} />
