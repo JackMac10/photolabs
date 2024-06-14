@@ -37,9 +37,10 @@ function reducer(state, action) {
         favouritePhotos: state.favouritePhotos.filter(id => id !== action.payload.id),
       };
     case ACTIONS.SELECT_PHOTO:
+      const photo = state.photos.find(ph => ph.id == action.payload.photo.id)
       return {
         ...state,
-        currentPhoto: action.payload.photo,
+        currentPhoto: photo,
         isModalOpen: true,
       };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
